@@ -3,7 +3,10 @@ const unfurl = require('unfurl.js');
 const url = require('url');
 
 const writeJsonResponse = function(response, code, body) {
-  response.writeHead(code, {'Content-Type': 'application/json'});
+  response.writeHead(code, {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  });
   response.end(JSON.stringify(body));
 };
 
