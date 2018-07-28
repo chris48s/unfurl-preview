@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+main {
+    padding-top: 20px;
+    margin: 0 auto;
+    min-width: 400px;
+    max-width: 700px;
+    border-radius: 3px;
+}
+
+blockquote {
+    padding: 0 1em;
+    border-left: 0.25em solid #dfe2e5;
+    text-align: left;
+}
+
+header {
+    background-color: #222;
+    height: 110px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+p {
+    padding: 0.1em;
+}
