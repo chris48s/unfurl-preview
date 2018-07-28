@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 
@@ -11,7 +12,7 @@ class App extends Component {
       url: null,
       error: null,
       data: null,
-    }
+    };
 
     this.unfurl = this.unfurl.bind(this);
   }
@@ -21,24 +22,24 @@ class App extends Component {
     axios.get(endpoint, {
       params: { url: url }
     })
-    .then(
-      function(res) {
-        this.setState({
-          url: url,
-          error: null,
-          data: res.data,
-        });
-      }.bind(this)
-    )
-    .catch(
-      function(e) {
-        this.setState({
-          url: url,
-          error: e,
-          data: {},
-        });
-      }.bind(this)
-    );
+      .then(
+        function(res) {
+          this.setState({
+            url: url,
+            error: null,
+            data: res.data,
+          });
+        }.bind(this)
+      )
+      .catch(
+        function(e) {
+          this.setState({
+            url: url,
+            error: e,
+            data: {},
+          });
+        }.bind(this)
+      );
   }
 
   render() {
@@ -69,7 +70,7 @@ class UrlInput extends Component {
     this.props = props;
     this.state = {
       url: undefined
-    }
+    };
 
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -93,7 +94,7 @@ class UrlInput extends Component {
   render() {
     const inputStyle = {
       marginRight: '1em'
-    }
+    };
     return (
       <div>
         <input style={inputStyle} type="text" name="url" size="36"
@@ -106,6 +107,9 @@ class UrlInput extends Component {
   }
 
 }
+UrlInput.propTypes = {
+  unfurl: PropTypes.func.isRequired,
+};
 
 
 class DefaultUnfurl extends Component {
@@ -141,7 +145,7 @@ class DefaultUnfurl extends Component {
         { authorName &&
           <p>
             { authorIcon && <img src={authorIcon} height="14" alt="author icon" /> }
-            { authorIcon && " " }
+            { authorIcon && ' ' }
             {authorName}
           </p>
         }
@@ -155,6 +159,11 @@ class DefaultUnfurl extends Component {
     );
   }
 }
+DefaultUnfurl.propTypes = {
+  url: PropTypes.string,
+  data: PropTypes.object,
+  error: PropTypes.object,
+};
 
 
 export default App;
