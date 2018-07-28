@@ -2,6 +2,7 @@
   "name": "unfurl-preview-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://chris48s.github.io/unfurl-preview/",
   "author": "chris48s",
   "license": "MIT",
   "dependencies": {
@@ -15,10 +16,13 @@
     "build": "react-scripts build",
     "test": "npm run lint && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint \"src/**/*.js\""
+    "lint": "eslint \"src/**/*.js\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "gh-pages": "^1.2.0"
   }
 }
