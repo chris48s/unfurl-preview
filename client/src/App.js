@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 
+function prependHttp(url) {
+  url = url.trim();
+
+  if (/^\.*\/|^(?!localhost)\w+:/.test(url)) {
+    return url;
+  }
+
+  return url.replace(/^(?!(?:\w+:)?\/\/)/, 'http://');
+}
+
+
 class App extends Component {
 
   constructor(props) {
@@ -20,7 +31,7 @@ class App extends Component {
   unfurl(url) {
     const endpoint = process.env.REACT_APP_API_ENDPOINT;
     axios.get(endpoint, {
-      params: { url: url }
+      params: { url: prependHttp(url) }
     })
       .then(
         function(res) {
