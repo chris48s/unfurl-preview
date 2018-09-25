@@ -1,6 +1,8 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import { HashRouter, StaticRouter, Route } from 'react-router-dom';
 
 
 function prependHttp(url) {
@@ -26,6 +28,15 @@ class App extends Component {
     };
 
     this.unfurl = this.unfurl.bind(this);
+    if (this.props.match.params.url) {
+      this.unfurl(decodeURIComponent(this.props.match.params.url));
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.url !== prevProps.match.params.url) {
+      this.unfurl(decodeURIComponent(this.props.match.params.url));
+    }
   }
 
   unfurl(url) {
@@ -58,7 +69,7 @@ class App extends Component {
       <div>
         <header>
           <h1>Unfurl Preview</h1>
-          <UrlInput unfurl={this.unfurl} />
+          <UrlInput />
         </header>
 
         <main>
@@ -72,34 +83,60 @@ class App extends Component {
     );
   }
 }
+App.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      url: PropTypes.string,
+    })
+  })
+};
 
 
-class UrlInput extends Component {
+class Router extends React.Component {
+  render() {
+    const router = (
+      <div>
+        <Route path="/" exact component={App} />
+        <Route path="/:url" component={App} />
+      </div>
+    );
+
+    if (typeof window !== 'undefined') {
+      return (<HashRouter>{ router }</HashRouter>);
+    } else {
+      const context = {};
+      return (
+        <StaticRouter context={context} basename="#">
+          { router }
+        </StaticRouter>
+      );
+    }
+  }
+}
+
+
+class BaseUrlInput extends Component {
 
   constructor(props) {
     super(props);
     this.props = props;
     this.state = {
-      url: undefined
+      url: undefined,
     };
 
     this.handleInput = this.handleInput.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.unfurl = this.unfurl.bind(this);
-  }
-
-  handleKeyPress(event) {
-    if (event.key === 'Enter') {
-      this.unfurl();
-    }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(event) {
     this.setState({ url: event.target.value });
   }
 
-  unfurl() {
-    this.props.unfurl(this.state.url);
+  handleSubmit(event) {
+    event.preventDefault();
+    if (this.state.url) {
+      this.props.history.push('/' + encodeURIComponent(this.state.url));
+    }
   }
 
   render() {
@@ -108,19 +145,23 @@ class UrlInput extends Component {
     };
     return (
       <div>
-        <input style={inputStyle} type="text" name="url" size="36"
-          onChange={this.handleInput}
-          onKeyPress={this.handleKeyPress}
-        />
-        <button type="unfurl" onClick={this.unfurl}>unfurl</button>
+        <form onSubmit={this.handleSubmit}>
+          <input style={inputStyle} type="text" name="url" size="36"
+            onChange={this.handleInput}
+          />
+          <input type="submit" value="unfurl" />
+        </form>
       </div>
     );
   }
 
 }
-UrlInput.propTypes = {
-  unfurl: PropTypes.func.isRequired,
+BaseUrlInput.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 };
+const UrlInput = withRouter(BaseUrlInput);
 
 
 class DefaultUnfurl extends Component {
@@ -177,4 +218,4 @@ DefaultUnfurl.propTypes = {
 };
 
 
-export default App;
+export default Router;
