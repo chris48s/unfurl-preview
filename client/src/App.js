@@ -69,10 +69,10 @@ class App extends Component {
       <div>
         <header>
           <h1>Unfurl Preview</h1>
-          <UrlInput />
         </header>
 
         <main>
+          <UrlInput />
           <DefaultUnfurl
             url={this.state.url}
             data={this.state.data}
