@@ -10,6 +10,6 @@
   "author": "chris48s",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^4.1.1"
+    "concurrently": "^4.1.2"
   }
 }
