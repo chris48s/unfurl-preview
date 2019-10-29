@@ -11,6 +11,6 @@
   "author": "chris48s",
   "license": "MIT",
   "dependencies": {
-    "unfurl.js": "^1.1.6"
+    "unfurl.js": "^5.0.0"
   }
 }
