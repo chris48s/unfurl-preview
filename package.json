@@ -11,6 +11,6 @@
   "author": "chris48s",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^5.0.1"
+    "concurrently": "^5.0.2"
   }
 }
