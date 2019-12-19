@@ -1,4 +1,3 @@
-const http = require("http");
 const { unfurl } = require('unfurl.js');
 const url = require('url');
 
@@ -10,9 +9,9 @@ const writeJsonResponse = function(response, code, body) {
   response.end(JSON.stringify(body));
 };
 
-http.createServer(function(request, response) {
+module.exports = function(request, response) {
   const parsedUrl = url.parse(request.url, true);
-  if (['/unfurl/', '/unfurl'].indexOf(parsedUrl.pathname) == -1) {
+  if (['/api/', '/api'].indexOf(parsedUrl.pathname) == -1) {
     writeJsonResponse(response, 404, {'error': 'not found'});
   }
 
@@ -30,4 +29,4 @@ http.createServer(function(request, response) {
     writeJsonResponse(response, 405, {'error': 'method not allowed'});
   }
 
-}).listen(8080);
+};
