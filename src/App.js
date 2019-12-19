@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   unfurl(url) {
-    const endpoint = process.env.REACT_APP_API_ENDPOINT;
+    const endpoint = '/api';
     axios.get(endpoint, {
       params: { url: prependHttp(url) }
     })
