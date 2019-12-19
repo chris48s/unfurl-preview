@@ -1,4 +1,4 @@
-# [unfurl-preview](https://chris48s.github.io/unfurl-preview/)
+# [unfurl-preview](https://unfurl-preview.now.sh/)
 
 [![Build Status](https://travis-ci.org/chris48s/unfurl-preview.svg?branch=master)](https://travis-ci.org/chris48s/unfurl-preview)
 
