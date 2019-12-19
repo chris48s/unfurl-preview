@@ -1,5 +1,5 @@
 const http = require("http");
-const unfurl = require('unfurl.js');
+const { unfurl } = require('unfurl.js');
 const url = require('url');
 
 const writeJsonResponse = function(response, code, body) {

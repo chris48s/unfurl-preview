@@ -179,16 +179,16 @@ class DefaultUnfurl extends Component {
     if (error) return (<div>{error.message}</div>);
 
 
-    const description = (data.ogp && data.ogp.ogDescription)
-      || (data.other && data.other.description);
-    const authorName = data.ogp && data.ogp.ogSiteName;
-    const authorIcon = data.other && data.other.icon;
-    const title = (data.ogp && data.ogp.ogTitle)
-      || (data.other && data.other.title && data.other.title.trim());
-    const titleLink = (data.ogp && data.ogp.ogUrl) || url;
+    const description = data.description || (data.open_graph && data.open_graph.description);
+    const authorName = (data.open_graph && data.open_graph.site_name);
+    const authorIcon = data.favicon;
+    const title = data.title.trim() || (data.open_graph && data.open_graph.title);
+    const titleLink = (data.open_graph && data.open_graph.url) || url;
     const thumbUrl =
-      (data.ogp && data.ogp.ogImage && data.ogp.ogImage[0] && data.ogp.ogImage[0].url)
-      || (data.other && data.other.shortcutIcon);
+      data.open_graph &&
+      data.open_graph.images &&
+      data.open_graph.images[0] &&
+      data.open_graph.images[0].url;
 
 
     return (
@@ -198,7 +198,7 @@ class DefaultUnfurl extends Component {
           <p>
             { authorIcon && <img src={authorIcon} height="14" alt="author icon" /> }
             { authorIcon && ' ' }
-            {authorName}
+            { authorName }
           </p>
         }
         { title &&
