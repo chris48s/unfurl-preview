@@ -1,5 +1,5 @@
 # [unfurl-preview](https://unfurl-preview.now.sh/)
 
-[![Build Status](https://travis-ci.org/chris48s/unfurl-preview.svg?branch=master)](https://travis-ci.org/chris48s/unfurl-preview)
+![Run tests](https://github.com/chris48s/unfurl-preview/workflows/Run%20tests/badge.svg?master)
 
 ![demo](demo.gif)
