@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "npm run lint",
-    "lint": "eslint \"api/**/*.js\""
+    "lint": "eslint \"**/*.js\""
   },
   "engines": {
     "node": "14.x",

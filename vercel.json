@@ -2,7 +2,7 @@
   "version": 2,
   "name": "unfurl-preview",
   "rewrites": [
-    {"source": "/", "destination": "/api/html"},
+    {"source": "/", "destination": "/api/frontend"},
     {"source": "/api", "destination": "/api/json"},
     {"source": "/api/", "destination": "/api/json/"}
   ]
