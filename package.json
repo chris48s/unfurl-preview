@@ -6,7 +6,7 @@
   "author": "chris48s",
   "license": "MIT",
   "dependencies": {
-    "unfurl.js": "^6.1.0"
+    "unfurl.js": "^6.2.0"
   },
   "scripts": {
     "test": "npm run lint",
