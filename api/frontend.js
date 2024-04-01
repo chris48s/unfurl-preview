@@ -36,7 +36,7 @@ function renderPage(url, result) {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="shortcut icon" href="favicon.ico">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@1.2.2/dist/dark.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2.1.1/out/water.min.css" />
       <style>
       blockquote {
         margin: 0;
