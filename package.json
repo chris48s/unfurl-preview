@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "eslint": "^9.3.0",
-    "vercel": "^34.1.11"
+    "vercel": "^34.2.0"
   }
 }
