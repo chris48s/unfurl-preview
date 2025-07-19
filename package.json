@@ -14,8 +14,8 @@
     "start": "vercel dev"
   },
   "engines": {
-    "node": "18.x",
-    "npm": ">=9.0.0"
+    "node": "22.x",
+    "npm": ">=10.0.0"
   },
   "devDependencies": {
     "eslint": "^9.30.1",
