@@ -18,7 +18,7 @@
     "npm": ">=10.0.0"
   },
   "devDependencies": {
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.2",
     "vercel": "^50.25.4"
   }
 }
