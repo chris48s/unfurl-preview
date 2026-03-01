@@ -18,7 +18,9 @@
     "npm": ">=10.0.0"
   },
   "devDependencies": {
-    "eslint": "^9.39.2",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.2",
+    "globals": "^17.4.0",
     "vercel": "^50.25.4"
   }
 }
